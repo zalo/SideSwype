@@ -1,0 +1,8 @@
+{
+	"scripts": {
+		"build": "esbuild ./src/main.js --bundle --sourcemap --format=esm --outdir=./build"
+	},
+	"dependencies": {
+		"esbuild": "^0.24.0"
+	}
+}

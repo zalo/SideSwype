@@ -11,7 +11,7 @@
 
 A simple latency benchmark for sending touch events from the phone to a PC browser via WebRTC.
 
-Just open this page up on your phone and in the browser to observe gesture transmission speeds.
+Just open this page up on your phone and on a desktop/PC to observe gesture transmission speeds from the phone to the PC.
 
 May evolve into an app for using Swype-esque gestures to discretely communicate data through the fabric of your pockets.
 

@@ -16,8 +16,7 @@ export default class Main {
     }
 
     async deferredConstructor() {
-        this.isMobile = this.mobileCheck();
-        this.isSafari = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        this.isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
         // Create the Cursor Object
         this.trail = [];
@@ -27,7 +26,7 @@ export default class Main {
             trail.style.position = "absolute";
             trail.style.width = "10px";
             trail.style.height = "10px";
-            trail.style.backgroundColor = this.isSafari ? "green" : "red";
+            trail.style.backgroundColor = this.isMobile ? "green" : "red";
             trail.style.borderRadius = "50%";
             trail.style.userSelect = "none";
             trail.style.pointerEvents = "none";
@@ -45,12 +44,10 @@ export default class Main {
             event.preventDefault(); event.stopPropagation();
             this.updateTrail(event.pageX, event.pageY);
 
-            if(this.conn){
-                this.conn.send(JSON.stringify({"id": event.pointerId, "x":event.pageX, "y":event.pageY})); 
-            }
+            if(this.conn){ this.conn.send(JSON.stringify({"id": event.pointerId, "x":event.pageX, "y":event.pageY})); }
         }, {passive: false});
 
-        if(this.isSafari){
+        if(this.isMobile){
             console.log("Creating Mobile Client");
             this.peer = new Peer(null, {
                 debug: 2
